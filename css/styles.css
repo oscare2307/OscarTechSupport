@@ -1,0 +1,258 @@
+ :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --light: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: #e2e8f0;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+        }
+        
+        .tech-bg {
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { 
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7),
+                           0 0 0 0 rgba(139, 92, 246, 0.5);
+            }
+            70% { 
+                box-shadow: 0 0 0 20px rgba(99, 102, 241, 0),
+                           0 0 0 40px rgba(139, 92, 246, 0);
+            }
+            100% { 
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0),
+                           0 0 0 0 rgba(139, 92, 246, 0);
+            }
+        }
+        
+        .whatsapp-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .whatsapp-bubble:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+        }
+        
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .service-card:hover::before {
+            left: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.3),
+                0 0 0 1px var(--primary);
+        }
+        
+        .tech-grid {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tech-grid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, transparent 48%, rgba(99, 102, 241, 0.1) 50%, transparent 52%),
+                linear-gradient(transparent 48%, rgba(99, 102, 241, 0.1) 50%, transparent 52%);
+            background-size: 50px 50px;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(135deg, var(--dark), var(--dark)) padding-box,
+                        linear-gradient(135deg, var(--primary), var(--secondary), var(--accent)) border-box;
+            border: 2px solid transparent;
+            border-radius: 20px;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid var(--primary);
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary) }
+        }
+        
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float-shape 15s infinite linear;
+        }
+        
+        @keyframes float-shape {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+        
+        .neon-glow {
+            box-shadow: 
+                0 0 5px var(--primary),
+                0 0 10px var(--primary),
+                0 0 15px var(--primary),
+                0 0 20px var(--primary);
+        }
+
+        /* Responsive improvements */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3.5rem !important;
+            }
+            
+            .service-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .floating-shapes .shape {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.8rem !important;
+            }
+            
+            .whatsapp-bubble {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
