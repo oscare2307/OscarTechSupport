@@ -7,7 +7,288 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --light: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: #e2e8f0;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+        }
+        
+        .tech-bg {
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { 
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7),
+                           0 0 0 0 rgba(139, 92, 246, 0.5);
+            }
+            70% { 
+                box-shadow: 0 0 0 20px rgba(99, 102, 241, 0),
+                           0 0 0 40px rgba(139, 92, 246, 0);
+            }
+            100% { 
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0),
+                           0 0 0 0 rgba(139, 92, 246, 0);
+            }
+        }
+        
+        .whatsapp-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .whatsapp-bubble:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+        }
+        
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .service-card:hover::before {
+            left: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.3),
+                0 0 0 1px var(--primary);
+        }
+        
+        .tech-grid {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tech-grid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, transparent 48%, rgba(99, 102, 241, 0.1) 50%, transparent 52%),
+                linear-gradient(transparent 48%, rgba(99, 102, 241, 0.1) 50%, transparent 52%);
+            background-size: 50px 50px;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(135deg, var(--dark), var(--dark)) padding-box,
+                        linear-gradient(135deg, var(--primary), var(--secondary), var(--accent)) border-box;
+            border: 2px solid transparent;
+            border-radius: 20px;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid var(--primary);
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary) }
+        }
+        
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float-shape 15s infinite linear;
+        }
+        
+        @keyframes float-shape {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+        
+        .neon-glow {
+            box-shadow: 
+                0 0 5px var(--primary),
+                0 0 10px var(--primary),
+                0 0 15px var(--primary),
+                0 0 20px var(--primary);
+        }
+
+        /* Responsive improvements */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Estilos para el formulario corregidos */
+        .form-input {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.7) !important;
+            border: 1px solid rgba(100, 116, 139, 0.5);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: #e2e8f0 !important;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        
+        .form-input::placeholder {
+            color: #94a3b8;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3.5rem !important;
+            }
+            
+            .service-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .floating-shapes .shape {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.8rem !important;
+            }
+            
+            .whatsapp-bubble {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
 </head>
 <body class="min-h-screen relative">
     <!-- Floating Shapes Background -->
@@ -327,81 +608,37 @@
                 <div class="glass-effect p-8 rounded-3xl">
                     <h3 class="text-2xl font-bold text-white mb-6">Envíame un Mensaje</h3>
                     
-                    <form action="https://formsubmit.co/oscarjulianescobarcamano127@gmail.com" method="POST" class="space-y-6">
+                    <form id="contact-form" action="https://formsubmit.co/oscarjulianescobarcamano127@gmail.com" method="POST" class="space-y-6">
                         <div>
                             <label for="name" class="block text-gray-300 mb-2">Nombre completo</label>
-                            <input type="text" id="name" class="w-full bg-dark/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent" placeholder="Tu nombre">
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Tu nombre" required>
                         </div>
                         
                         <div>
                             <label for="email" class="block text-gray-300 mb-2">Correo electrónico</label>
-                            <input type="email" id="email" class="w-full bg-dark/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent" placeholder="tu@email.com">
+                            <input type="email" id="email" name="email" class="form-input" placeholder="tu@email.com" required>
                         </div>
                         
                         <div>
                             <label for="message" class="block text-gray-300 mb-2">Mensaje</label>
-                             <textarea id="message" rows="5" class="w-full bg-dark/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent" placeholder="Tu mensaje..."></textarea>
+                            <textarea id="message" name="message" rows="5" class="form-input" placeholder="Tu mensaje..." required></textarea>
                         </div>
                         
                         <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 hover-lift">
                             Enviar Mensaje
                         </button>
                         
-                         <!-- Redirección (usa una URL real, no localhost) -->
-                      <input type="hidden" name="_next" value="https://oscare2307.github.io/OscarTechSupport/#inicio">
-  
+                        <!-- Redirección después del envío -->
+                        <input type="hidden" name="_next" value="https://oscare2307.github.io/OscarTechSupport/#inicio">
                         <!-- Desactivar CAPTCHA -->
-                      <input type="hidden" name="_captcha" value="false">
-  
+                        <input type="hidden" name="_captcha" value="false">
                         <!-- Prevenir template por defecto -->
-                      <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_template" value="table">
                     </form>
                 </div>
             </div>
         </div>
     </section>
-<script>
-    // Redirección manual después del envío
-document.getElementById('donation-form').addEventListener('submit', function() {
-    setTimeout(function() {
-        window.location.href = 'https://oscare2307.github.io/OscarTechSupport/#inicio'; // Tu redirección local
-    }, 3000); // Espera 3 segundos para que se envíe el formulario
-});
-
- document.getElementById('donation-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Mostrar datos que se enviarán
-    const formData = new FormData(this);
-    for (let [key, value] of formData.entries()) {
-        console.log(key + ': ' + value);
-    }
-    
-    // Enviar formulario
-    this.submit();
-});
-
-document.getElementById('donation-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const formData = new FormData(this);
-    
-    try {
-        const response = await fetch('https://formsubmit.co/ajax/oscarjulianescobarcamano127@gmail.com', {
-            method: 'POST',
-            body: formData
-        });
-        
-        const data = await response.json();
-        console.log('Éxito:', data);
-        alert('Mensaje enviado correctamente');
-        
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Error al enviar el mensaje');
-    }
-});
-    </script>
 
     <!-- Footer -->
     <footer class="py-12 border-t border-gray-800">
@@ -424,10 +661,73 @@ document.getElementById('donation-form').addEventListener('submit', async functi
         </div>
     </footer>
 
-    <script src="./js/main.js"></script>
+    <script>
+        // Script simplificado para el formulario
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    // Permitir que el formulario se envíe normalmente
+                    // No necesitamos prevenir el comportamiento por defecto
+                    console.log('Formulario enviado');
+                });
+            }
+            
+            // Script para el menú móvil
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMenu = document.getElementById('close-menu');
+            
+            if (mobileMenuButton && mobileMenu && closeMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.add('active');
+                });
+                
+                closeMenu.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                });
+            }
+            
+            // Script para animaciones al hacer scroll
+            const scrollElements = document.querySelectorAll('.scroll-fade');
+            
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+            
+            const displayScrollElement = (element) => {
+                element.classList.add('visible');
+            };
+            
+            const hideScrollElement = (element) => {
+                element.classList.remove('visible');
+            };
+            
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    } else {
+                        hideScrollElement(el);
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+            
+            // Inicializar animaciones al cargar la página
+            handleScrollAnimation();
+        });
+    </script>
 </body>
-
 </html>
+
 
 
 
