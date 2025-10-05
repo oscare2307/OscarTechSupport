@@ -262,6 +262,7 @@
             color: #94a3b8;
         }
         
+        /* Mejoras de responsividad */
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 3.5rem !important;
@@ -273,6 +274,34 @@
             
             .floating-shapes .shape {
                 display: none;
+            }
+            
+            .hero-section {
+                padding-top: 6rem;
+                padding-bottom: 4rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-buttons a {
+                width: 100%;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
         
@@ -287,6 +316,42 @@
                 font-size: 24px;
                 bottom: 20px;
                 right: 20px;
+            }
+            
+            .service-card {
+                padding: 1.5rem;
+            }
+            
+            .section-padding {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem !important;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .social-links {
+                justify-content: center;
             }
         }
     </style>
@@ -352,15 +417,15 @@
             </button>
         </div>
         <div class="flex flex-col items-center justify-center h-full space-y-10">
-            <a href="#inicio" class="text-2xl font-bold text-white hover:text-indigo-400 transition-colors">Inicio</a>
-            <a href="#servicios" class="text-2xl font-bold text-white hover:text-indigo-400 transition-colors">Servicios</a>
-            <a href="#sobre-mi" class="text-2xl font-bold text-white hover:text-indigo-400 transition-colors">Sobre Mí</a>
-            <a href="#contacto" class="text-2xl font-bold text-white hover:text-indigo-400 transition-colors">Contacto</a>
+            <a href="#inicio" class="mobile-nav-link text-2xl font-bold text-white hover:text-indigo-400 transition-colors">Inicio</a>
+            <a href="#servicios" class="mobile-nav-link text-2xl font-bold text-white hover:text-indigo-400 transition-colors">Servicios</a>
+            <a href="#sobre-mi" class="mobile-nav-link text-2xl font-bold text-white hover:text-indigo-400 transition-colors">Sobre Mí</a>
+            <a href="#contacto" class="mobile-nav-link text-2xl font-bold text-white hover:text-indigo-400 transition-colors">Contacto</a>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <section id="inicio" class="pt-32 pb-28 tech-bg relative overflow-hidden">
+    <section id="inicio" class="hero-section pt-32 pb-28 tech-bg relative overflow-hidden">
         <div class="absolute inset-0 bg-black/40"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center">
@@ -379,17 +444,17 @@
                     <span class="typewriter text-3xl md:text-5xl font-bold text-indigo-300 mt-4">de Elite</span>
                 </h1>
                 
-                <p class="text-lg md:text-2xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed px-4">
+                <p class="hero-subtitle text-lg md:text-2xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed px-4">
                     Soluciones tecnológicas de vanguardia para transformar tu experiencia digital. 
                     Expertos en mantenimiento, reparación y optimización de equipos de cómputo.
                 </p>
                 
                 <div class="mb-12 md:mb-16">
                     <h2 class="text-2xl md:text-3xl font-bold text-indigo-300 mb-2 glow-text">Oscar Julian Escobar Camaño</h2>
-                    <p class="text-gray-400 text-base md:text-lg">Ingeniero en Sistemas & Especialista en Soporte Técnico</p>
+                    <p class="text-gray-400 text-base md:text-lg">Ingeniero en Sistemas & Especialista en Soporte Técnico de Cómputo</p>
                 </div>
                 
-                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 px-4">
+                <div class="hero-buttons flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 px-4">
                     <a href="#contacto" class="group relative overflow-hidden bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 md:px-10 md:py-4 rounded-xl font-bold text-base md:text-lg transition-all duration-300 hover-lift w-full sm:w-auto text-center">
                         <span class="relative z-10">🚀 Solicitar Soporte Inmediato</span>
                         <div class="absolute inset-0 bg-indigo-700 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
@@ -404,10 +469,10 @@
     </section>
 
     <!-- Services Section -->
-    <section id="servicios" class="py-16 md:py-24 tech-grid relative">
+    <section id="servicios" class="section-padding py-16 md:py-24 tech-grid relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 md:mb-20 scroll-fade">
-                <h2 class="text-4xl md:text-5xl font-black text-white mb-6">Servicios Premium</h2>
+                <h2 class="section-title text-4xl md:text-5xl font-black text-white mb-6">Servicios Premium</h2>
                 <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto px-4">
                     Soluciones tecnológicas avanzadas diseñadas para superar tus expectativas
                 </p>
@@ -497,19 +562,21 @@
     </section>
 
     <!-- About Section -->
-    <section id="sobre-mi" class="py-16 md:py-24 tech-bg relative">
+    <section id="sobre-mi" class="section-padding py-16 md:py-24 tech-bg relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
+            <div class="about-grid grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
                 <div class="scroll-fade order-2 lg:order-1">
-                    <h2 class="text-4xl md:text-5xl font-black text-white mb-6 md:mb-8">Sobre Mí</h2>
+                    <h2 class="section-title text-4xl md:text-5xl font-black text-white mb-6 md:mb-8">Sobre Mí</h2>
                     <p class="text-lg md:text-xl text-gray-300 mb-6 md:mb-8 leading-relaxed">
                         Soy <span class="text-indigo-400 font-bold">Oscar Julian Escobar Camaño</span>, ingeniero en sistemas con más de 8 años de experiencia especializado en soluciones tecnológicas de alto nivel.
                     </p>
                     <p class="text-base md:text-lg text-gray-400 mb-10 md:mb-12 leading-relaxed">
-                        Mi enfoque combina expertise técnico con innovación constante, brindando soluciones que no solo resuelven problemas inmediatos, sino que transforman la experiencia tecnológica de mis clientes hacia la excelencia digital.
+                    Mi metodología fusiona maestría técnica certificada con innovación, creando ecosistemas digitales que evolucionan con tus necesidades.
+                    No solo soluciono problemas técnicos; diseño experiencias tecnológicas premium que potencian tu productividad, seguridad y rendimiento al máximo 
+                    nivel. Tu transformación digital comienza aquí.
                     </p>
                     
-                    <div class="grid grid-cols-2 gap-6 md:gap-8 mb-10 md:mb-12">
+                    <div class="stats-grid grid grid-cols-2 gap-6 md:gap-8 mb-10 md:mb-12">
                         <div class="text-center">
                             <div class="text-3xl md:text-4xl font-black text-indigo-400 mb-2">850+</div>
                             <div class="text-gray-400 text-sm md:text-base">Equipos Optimizados</div>
@@ -528,7 +595,7 @@
                         </div>
                     </div>
                     
-                    <div class="flex space-x-4">
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                         <a href="#contacto" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover-lift text-center">
                             Contáctame
                         </a>
@@ -538,7 +605,7 @@
                     </div>
                 </div>
                 
-                <div class="scroll-fade order-1 lg:order-2" style="transition-delay: 0.2s;">
+                <div class="about-image scroll-fade order-1 lg:order-2" style="transition-delay: 0.2s;">
                     <div class="relative">
                         <img src="./img/1.jpg" 
                              alt="Oscar Julian Escobar en laboratorio tecnológico" 
@@ -551,16 +618,16 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contacto" class="py-16 md:py-24 relative">
+    <section id="contacto" class="section-padding py-16 md:py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 md:mb-20">
-                <h2 class="text-4xl md:text-5xl font-black text-white mb-6">Contacto</h2>
+                <h2 class="section-title text-4xl md:text-5xl font-black text-white mb-6">Contacto</h2>
                 <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
                     Ponte en contacto para una consulta gratuita y soluciones personalizadas
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-12 md:gap-16">
+            <div class="contact-grid grid md:grid-cols-2 gap-12 md:gap-16">
                 <div class="glass-effect p-8 rounded-3xl">
                     <h3 class="text-2xl font-bold text-white mb-6">Información de Contacto</h3>
                     
@@ -575,7 +642,6 @@
                             </div>
                         </div>
                         
-                        
                         <div class="flex items-start">
                             <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center text-white text-xl mr-4">
                                 <i class="fas fa-envelope"></i>
@@ -589,7 +655,7 @@
                     
                     <div class="mt-10">
                         <h4 class="text-white font-semibold mb-4">Sígueme en redes sociales</h4>
-                        <div class="flex space-x-4">
+                        <div class="social-links flex space-x-4">
                             <a href="https://www.facebook.com/oscarjulian.escobarcamano" class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white hover:bg-indigo-700 transition-colors">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
@@ -621,8 +687,8 @@
                         </div>
 
                         <div>
-                            <label for="phone" class="block text-gray-300 mb-2">Telefono</label>
-                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="Tu numero de telefono" required>
+                            <label for="phone" class="block text-gray-300 mb-2">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="Tu número de teléfono" required>
                         </div>
                         
                         <div>
@@ -655,7 +721,7 @@
                 </h3>
                 <p class="text-gray-400 mb-8">Soluciones tecnológicas de elite para todos tus dispositivos</p>
                 
-                <div class="flex justify-center space-x-6 mb-8">
+                <div class="footer-links flex justify-center space-x-6 mb-8">
                     <a href="#inicio" class="text-gray-400 hover:text-white transition-colors">Inicio</a>
                     <a href="#servicios" class="text-gray-400 hover:text-white transition-colors">Servicios</a>
                     <a href="#sobre-mi" class="text-gray-400 hover:text-white transition-colors">Sobre Mí</a>
@@ -684,6 +750,7 @@
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const closeMenu = document.getElementById('close-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
             
             if (mobileMenuButton && mobileMenu && closeMenu) {
                 mobileMenuButton.addEventListener('click', function() {
@@ -692,6 +759,13 @@
                 
                 closeMenu.addEventListener('click', function() {
                     mobileMenu.classList.remove('active');
+                });
+                
+                // Cerrar menú al hacer clic en cualquier enlace
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('active');
+                    });
                 });
             }
             
@@ -729,8 +803,25 @@
             
             // Inicializar animaciones al cargar la página
             handleScrollAnimation();
+            
+            // Smooth scroll para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
 </html>
-
