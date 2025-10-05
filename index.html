@@ -701,7 +701,7 @@
                         </button>
                         
                         <!-- Redirección después del envío -->
-                        <input type="hidden" name="_next" value="https://oscare2307.github.io/OscarTechSupport/#inicio">
+                        <input type="hidden" name="_next" value="https://oscare2307.github.io/OscarTechSupport/gracias.html">
                         <!-- Desactivar CAPTCHA -->
                         <input type="hidden" name="_captcha" value="false">
                         <!-- Prevenir template por defecto -->
@@ -711,6 +711,49 @@
             </div>
         </div>
     </section>
+
+    <script>
+        // Redirección manual después del envío
+document.getElementById('donation-form').addEventListener('submit', function() {
+    setTimeout(function() {
+        window.location.href = 'https://oscare2307.github.io/OscarTechSupport/'; // Tu redirección local
+    }, 3000); // Espera 3 segundos para que se envíe el formulario
+});
+
+ document.getElementById('donation-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Mostrar datos que se enviarán
+    const formData = new FormData(this);
+    for (let [key, value] of formData.entries()) {
+        console.log(key + ': ' + value);
+    }
+    
+    // Enviar formulario
+    this.submit();
+});
+
+document.getElementById('donation-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    
+    try {
+        const response = await fetch('https://formsubmit.co/ajax/oscarjulianescobarcamano127@gmail.com', {
+            method: 'POST',
+            body: formData
+        });
+        
+        const data = await response.json();
+        console.log('Éxito:', data);
+        alert('Mensaje enviado correctamente');
+        
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error al enviar el mensaje');
+    }
+});
+    </script>
 
     <!-- Footer -->
     <footer class="py-12 border-t border-gray-800">
